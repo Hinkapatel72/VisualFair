@@ -1,0 +1,6 @@
+<ng-container *ngIf="isMobile">
+    <app-home-mobile></app-home-mobile>
+</ng-container>
+<ng-container *ngIf="!isMobile">
+    <app-home-web></app-home-web>
+</ng-container>

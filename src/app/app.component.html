@@ -1,0 +1,99 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav style="width: 320px; background-color: var(--background-tertiary);">
+    <div fxLayout="column" fxLayoutAlign="space-between start" fxFlexFill>
+      <div fxLayout="column" class="pd16-L" fxFlex=60>
+        <div class="pointer pd24-LR pd32-TB">
+          <span class="foreground-color-sidenav"> Welcome at Visual Flair</span>
+        </div>
+
+        <div class="pointer pd8-TB">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <mat-icon class="foreground-color-sidenav" svgIcon="camera_sidenav"></mat-icon>
+            <span class="foreground-color-sidenav"> Photographs</span>
+          </div>
+        </div>
+
+        <div class="pointer pd8-TB">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <mat-icon class="foreground-color-sidenav" svgIcon="poetry_sidenav"></mat-icon>
+            <span class="foreground-color-sidenav" matTooltip="Coming Soon"> Poetry</span>
+          </div>
+        </div>
+        <div class="pointer pd8-TB">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <mat-icon class="foreground-color-sidenav" svgIcon="art_sidenav"></mat-icon>
+            <span class="foreground-color-sidenav" matTooltip="Coming Soon"> Art</span>
+          </div>
+        </div>
+        <div class="pointer pd8-TB">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <mat-icon class="foreground-color-sidenav" svgIcon="graphics_sidenav"></mat-icon>
+            <span class="foreground-color-sidenav" matTooltip="Coming Soon"> Graphic Designs</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mrg16-TB pd16-LR">
+        <mat-divider class="background-color-sidenav mrg16-B"></mat-divider>
+
+        <app-quote class="foreground-color-sidenav" [resetQuoteSubject]="resetQuoteSubject.asObservable()">
+        </app-quote>
+        <mat-divider class="background-color-sidenav mrg8-T"></mat-divider>
+      </div>
+
+      <div fxLayout="row" fxFlex=12>
+        <mat-expansion-panel class="mat-elevation-z0" style="background-color: transparent !important;" fxFlexFill>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="foreground-color-sidenav mat-body-1">
+              Theming
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="themePreference" fxLayout="row" fxLayoutGap="16px" fxFlexFill
+            fxLayoutAlign="sapce-evenly center">
+            <mat-slide-toggle formControlName="autoTheme" (click)="toggleTheme()">
+              <span class="foreground-color-sidenav"> {{themeType}} </span>
+            </mat-slide-toggle>
+            <mat-checkbox formControlName="autoTheme"> <span class="foreground-color-sidenav">Auto Theme</span>
+            </mat-checkbox>
+          </form>
+        </mat-expansion-panel>
+      </div>
+    </div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- Mobile Header -->
+    <ng-container *ngIf="isMobile">
+      <header fxLayout="row" fxLayoutAlign="space-between center" class="pd8-TB home-header">
+        <button mat-button (click)="sidenav.toggle();resetQuoteComponent();" class="pd0 mrg0 pd4-LR" fxFlex=15>
+          <mat-icon class="foreground-color-sidenav" aria-hidden="false" aria-label="Example home icon">dehaze
+          </mat-icon>
+        </button>
+        <div fxLayoutAlign="center center" fxFlex=80>
+          <span class="foreground-color-sidenav"> LOGO </span>
+        </div>
+        <div fxFlex=15></div>
+      </header>
+    </ng-container>
+
+    <!-- Web Header -->
+    <ng-container *ngIf="!isMobile">
+      <header fxLayout="row" fxLayoutAlign="space-between center" class="pd8 home-header">
+        <button mat-button (click)="sidenav.toggle()" fxFlex=4>
+          <mat-icon class="foreground-color-sidenav" aria-hidden="false" aria-label="Example home icon">dehaze
+          </mat-icon>
+        </button>
+        <div fxLayoutAlign="center center" fxFlex=80>
+          <span class="foreground-color-sidenav"> LOGO </span>
+        </div>
+        <div fxFlex=4></div>
+      </header>
+    </ng-container>
+    <div>
+      <router-outlet></router-outlet>
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

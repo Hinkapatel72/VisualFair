@@ -1,0 +1,24 @@
+.red-900 {
+    color: #B71C1C !important;
+}
+
+.gray-600 {
+    color: #757575 !important;
+}
+
+.home-body {
+    /* background-color: antiquewhite; */
+    background-color: var(--background-default) !important;
+}
+
+.post-card-content {
+    background-color: var(--background-post) !important;
+}
+
+.foreground-color-post {
+    color: var(--foreground-post) !important;
+}
+
+.foreground-color-more {
+    color: var(--foreground-more) !important;
+}

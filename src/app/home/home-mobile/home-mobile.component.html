@@ -1,0 +1,74 @@
+<ng-container *ngIf="content">
+    <div class="home-body pd4 pd8-T" fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex>
+            <ng-container *ngFor="let imageDetails of content">
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex=100>
+                    <mat-card fxLayout="column" fxLayoutAlign="center start" class="mrg8 post-card-content"
+                        style="border-radius: 15px !important;" hammerTime (doubleTap)="toggleLike(imageDetails)">
+                        <div fxFlex=40>
+                            <img class="object-fit_contain" mat-card-image src="{{imageDetails?.imagePath}}"
+                                alt="Photo from VisualFlair" style="border-radius: 15px !important;">
+                        </div>
+                        <mat-card-content fxFlexFill>
+                            <div fxLayout="column" fxLayoutAlign="start start" class="mrg4-TB foreground-color-post">
+                                <span class="mat-body-2 fw-600">{{imageDetails?.title}}</span>
+                            </div>
+
+                            <div class="foreground-color-post mat-caption fw-400 mrg4-T mrg8-B">
+                                <span>
+                                    {{imageDetails?.description | slice:sliceOptions.start:sliceOptions.end}}</span>
+                                <div *ngIf="imageDetails?.description.length >= sliceOptions.default">
+                                    <!-- <span class="foreground-color-more" *ngIf="showState[imageDetails?.id]" (click)="onExpandText()">... show less</span> -->
+                                    <span class="foreground-color-more" *ngIf="!showState[imageDetails?.id]"
+                                        (click)="onExpandText(imageDetails)">...
+                                        show more</span>
+                                </div>
+                            </div>
+                            <span class="mat-body-1 fw-600 foreground-color-post">Added to Nature</span>
+                        </mat-card-content>
+                        <mat-divider style="position: relative !important;"></mat-divider>
+                        <mat-card-actions>
+                            <div class="mrg8-LR mrg4-TB" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+                                <button mat-icon-button (click)="toggleLike(imageDetails)">
+                                    <mat-icon *ngIf="!liked[imageDetails?.id]" class="gray-600">favorite_border
+                                    </mat-icon>
+                                    <mat-icon *ngIf="liked[imageDetails?.id]" class="red-900">favorite
+                                    </mat-icon>
+                                </button>
+                                <span class="foreground-color-post">{{imageDetails?.likes}}</span>
+                                <button mat-button (click)="openShareSheet(imageDetails)"
+                                    class="foreground-color-post">SHARE</button>
+                            </div>
+
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+
+            </ng-container>
+        </div>
+
+
+        <!-- 
+        <div>
+
+            <swiper [config]="config">
+
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <img src="{{content[0].imagePath}}" width="612px" height="612px" />
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="{{content[0].imagePath}}" width="612px" height="612px" />
+                    </div>
+
+                    <div class="swiper-slide">
+                        <img src="{{content[0].imagePath}}" width="612px" height="612px" />
+                    </div>
+                </div>
+            </swiper>
+
+        </div> -->
+    </div>
+</ng-container>

@@ -1,0 +1,10 @@
+
+
+.object-fit_contain {
+    object-fit: scale-down !important;
+}
+
+.image-box {
+    height: 70vh;
+    background-color: #444;
+}

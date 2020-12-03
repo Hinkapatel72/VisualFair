@@ -1,0 +1,7 @@
+<p style="text-align:center !important">"{{quote?.text}}"</p>
+<ng-container *ngIf="quote?.author">
+    <p align="right">- {{quote?.author}}</p>
+</ng-container>
+<ng-container *ngIf="!quote?.author">
+    <p align="right">- Anonymous</p>
+</ng-container>
